@@ -1,11 +1,15 @@
 package com.maggie.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Data
+@Builder(toBuilder = true)
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@Setter(value = AccessLevel.PACKAGE)
+@Getter
 @Entity
 public class Student {
 
@@ -17,4 +21,5 @@ public class Student {
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private LocalDate dateOfBirth;
+
 }
