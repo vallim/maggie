@@ -1,12 +1,12 @@
-package com.maggie.apis;
+package com.maggie;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApisApplication {
+public class MaggieApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApisApplication.class, args);
+		SpringApplication.run(MaggieApplication.class, args);
 	}
 }
