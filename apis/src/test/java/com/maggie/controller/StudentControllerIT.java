@@ -1,5 +1,6 @@
 package com.maggie.controller;
 
+import static com.maggie.util.JsonUtil.serialize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -8,7 +9,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.eclipsesource.json.Json;
 import com.maggie.model.Gender;
 import com.maggie.model.Student;
 import com.maggie.service.StudentService;
@@ -69,10 +69,7 @@ public class StudentControllerIT {
 
         mockMvc.perform(post(BASE_URL)
             .contentType(MediaType.APPLICATION_JSON_UTF8)
-            .content(Json.object()
-                .add("name", newStudent.getName())
-                .add("gender", newStudent.getGender().toString())
-                .add("dateOfBirth", newStudent.getDateOfBirth().toString()).toString()))
+            .content(serialize(newStudent)))
             .andExpect(status().isCreated());
     }
 }
