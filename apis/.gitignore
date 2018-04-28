@@ -17,3 +17,4 @@ test-output
 .DS_Store
 node_modules/
 lib/
+logs/
