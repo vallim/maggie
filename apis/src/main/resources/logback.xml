@@ -5,19 +5,21 @@
   <appender name="SAVE-TO-FILE" class="ch.qos.logback.core.FileAppender">
     <file>${LOG_PATH}/log.log</file>
     <encoder>
-      <Pattern>
-        %d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
-      </Pattern>
+      <pattern>
+        %d{dd-MM-yyyy HH:mm:ss.SSS} [%X{X-B3-TraceId:-}] [%thread] %-5level %logger{36} - %msg%n
+      </pattern>
     </encoder>
   </appender>
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36} - %msg%n</pattern>
+      <pattern>
+        %d{dd-MM-yyyy HH:mm:ss.SSS} [%X{X-B3-TraceId:-}] %magenta([%thread]) %highlight(%-5level) %logger{36} - %msg%n
+      </pattern>
     </encoder>
   </appender>
   <root level="info">
-    <appender-ref ref="SAVE-TO-FILE" />
-    <appender-ref ref="STDOUT" />
+    <appender-ref ref="SAVE-TO-FILE"/>
+    <appender-ref ref="STDOUT"/>
   </root>
 </configuration>
